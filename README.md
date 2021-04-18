@@ -1,56 +1,90 @@
 # FastAPI CURD Operation Using MongoDB On AudioData
-![PyMongo](https://img.shields.io/badge/PyMongo-3.10.1-green) ![FastAPI](https://img.shields.io/badge/FastAPI-0.63.0-blue) ![Schematics](https://img.shields.io/badge/Schematics-2.1.0-yellow) ![Uvicorn](https://img.shields.io/badge/Uvicorn_Server-0.13.4-red)
+![PyMongo](https://img.shields.io/badge/PyMongo-3.10.1-green) ![FastAPI](https://img.shields.io/badge/FastAPI-0.63.0-blue) ![Schematics](https://img.shields.io/badge/Schematics-2.1.0-yellow) ![Uvicorn](https://img.shields.io/badge/Uvicorn Server-0.13.4-red)
 
 This is a  FastAPI based Web API that simulates the behavior of an audio file server while using a MongoDB database.
 
 ### Problem Statement
-You have one of three audio files which structures are defined below Audio file type can be one of the following:
-1. Song
-2. Podcast
-3. Audiobook
 
-**Song file fields:**
-- `ID` – (mandatory, integer, unique)
-- `Name of the song `– (mandatory, string, cannot be larger than 100 characters)
-- `Duration in number of seconds `– (mandatory, integer, positive)
-- ` Uploaded time` – (mandatory, Datetime, cannot be in the past)
+ [ Click Here Download Detailed Document of Problem Description](https://github.com/TechyNilesh/FastAPI-CURD-Operation-Using-MongoDB-On-AudioData-/blob/8aa0ce67b10048dd0a07721c82f425f9dea63fc3/documents/Python_Test.pdf "Detailed Document Problem Description")
 
-**Podcast file fields:**
-- `ID `– (mandatory, integer, unique)
-- `Name of the podcast` – (mandatory, string, cannot be larger than 100 characters)
-- `Duration in number of seconds` – (mandatory, integer, positive)
-- `Uploaded time` – (mandatory, Datetime, cannot be in the past)
-- `Host `– (mandatory, string, cannot be larger than 100 characters)
-- `Participants` – (optional, list of strings, each string cannot be larger than 100 characters, maximum of 10 participants possible)
+### Colne the repository
 
-**Audiobook file fields:**
-- `ID` – (mandatory, integer, unique)
-- `Title of the audiobook` – (mandatory, string, cannot be larger than 100 characters)
-- `Author of the title` -  (mandatory, string, cannot be larger than 100 characters)
-- `Narrator` - (mandatory, string, cannot be larger than 100 characters)
-- `Duration in number of seconds` – (mandatory, integer, positive)
-- `Uploaded time` – (mandatory, Datetime, cannot be in the past)
+- Clone the repo from github: `git clone https://github.com/TechyNilesh/FastAPI-CURD-Operation-Using-MongoDB-On-AudioData.git`
 
-*Implement create, read, upload, and delete endpoints for an audio file as defined below:*
+- In terminal go to folder: `cd FastAPI-CURD-Operation-Using-MongoDB-On-AudioData`
 
-**Create API:**
+### Requirements
+```
+schematics==2.1.0
+uvicorn==0.13.4
+pymongo==3.10.1
+fastapi==0.63.0
+secrets==1.0.2
+```
+Run Following commond to install requirement on your machine:
 
-The request will have the following fields:
-- audioFileType – mandatory, one of the 3 audio types possible
-- audioFileMetadata – mandatory, dictionary, contains the metadata for one of the three audio files (song, podcast, audiobook)
+`> pip install -r requirements.txt
+`
+### Running API Server
+We are using Uvicorn for running FastAPI Server. 
+> Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools.
 
-**Delete API:**
-- The route will be in the following format: `<audioFileType>/<audioFileID>`
+For starting the server you need to run following commond in working directory:
 
-**Update API:**
-- The route be in the following format: ` <audioFileType>/<audioFileID>`
-- The request body will be the same as the upload
+`> python main.py`
 
-**Get API:**
-- The route `<audioFileType>/<audioFileID>` will return the specific audio file
-- The route `<audioFileType>`  will return all the audio files of that type
+### Accessing the API
 
-The response of these methods should be one of the following:
-- Action is successful: 200 OK
-- The request is invalid: 400 bad request
-- Any error: 500 internal server error
+Server are running on localhost `127.0.0.1` and port number `8000`, you can just type on your browser or Postman Tool:
+
+`http://127.0.0.1:8000/`
+
+We are using Postman Tool for testing the API, You can performe diffrent CURD operation using followings:
+
+**Create:**  for creating a new file you need run `http://127.0.0.1:8000/create/`  with Method `POST` and `request-body` formate is following for each file:
+
+**Note:**  You do not  need to  define `upload_time` and `id` field its autometiclly created by backend server. 
+```
+## song
+
+ {
+  "audioFileType":"song",
+  "audioFileMetadata":{
+      "name":"<song name>",
+      "duration":<duration of the song in second>
+      }
+  }
+
+## podcast
+
+ {
+  "audioFileType":"podcast",
+  "audioFileMetadata":{
+      "name":"<podcast name>",
+      "host":"<podcast host name>",
+      "participants": ["<name_1>","<name_2>"......"<name_10>"],
+      "duration":<duration of the podcast in second>
+      }
+  }
+
+## audiobook
+
+ {
+  "audioFileType":"audiobook",
+  "audioFileMetadata":{
+      "title":"<title of the audiobook>",
+      "author":"<auther name of the audiobook>",
+      "narrator":"<narrator name>",
+      "duration":<duration of the audiobook in second>
+      }
+  }
+```
+**Update:** for updating a old file you need run `http://127.0.0.1:8000/update/<audioFileType>/<audioFileID>`  with Method `PUT` and `request-body` formate is same as create formate for each file.
+
+**Read:** To reading the file in the database you have two option:
+1. Read all data by audioFileType: for reading data by audioFileType you need to run `http://127.0.0.1:8000/get/<audioFileType>/`  with Method `GET`, It will return all audio data belonging to the particuler audio file type.
+2. Read by audioFileID: for reading data by audioFileID you need to run `http://127.0.0.1:8000/get/<audioFileType>/<audioFileID>`  with Method `GET`, It will return single audio data belonging to the particuler audio id.
+
+**Delete:** For deleting the file you need run `http://127.0.0.1:8000/delete/<audioFileType>/<audioFileID>`  with Method `DELETE`, It will delete the particular file.
+
+This is a whole process of running the FastAPI Server with MongoDB Database, If you have nay query, you can reach out me through My Linkedin: [@TechyNilesh](https://www.linkedin.com/in/techynilesh/ "@TechyNilesh")
