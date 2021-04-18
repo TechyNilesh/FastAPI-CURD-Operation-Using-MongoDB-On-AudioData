@@ -87,4 +87,4 @@ We are using Postman Tool for testing the API, You can performe diffrent CURD op
 
 **Delete:** For deleting the file you need run `http://127.0.0.1:8000/delete/<audioFileType>/<audioFileID>`  with Method `DELETE`, It will delete the particular file.
 
-This is a whole process of running the FastAPI Server with MongoDB Database, If you have nay query, you can reach out me through My Linkedin: [@TechyNilesh](https://www.linkedin.com/in/techynilesh/ "@TechyNilesh")
+This is a whole process of running the FastAPI Server with MongoDB Database, If you have any query, you can reach out me through My Linkedin: [@TechyNilesh](https://www.linkedin.com/in/techynilesh/ "@TechyNilesh")
