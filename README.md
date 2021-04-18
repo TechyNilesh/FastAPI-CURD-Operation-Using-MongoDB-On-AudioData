@@ -1,5 +1,5 @@
 # FastAPI CURD Operation Using MongoDB On AudioData
-![PyMongo](https://img.shields.io/badge/PyMongo-3.10.1-green) ![FastAPI](https://img.shields.io/badge/FastAPI-0.63.0-blue) ![Schematics](https://img.shields.io/badge/Schematics-2.1.0-yellow) ![Uvicorn](https://img.shields.io/badge/Uvicorn Server-0.13.4-red)
+![PyMongo](https://img.shields.io/badge/PyMongo-3.10.1-green) ![FastAPI](https://img.shields.io/badge/FastAPI-0.63.0-blue) ![Schematics](https://img.shields.io/badge/Schematics-2.1.0-yellow) ![Uvicorn](https://img.shields.io/badge/UvicornServer-0.13.4-red)
 
 This is a  FastAPI based Web API that simulates the behavior of an audio file server while using a MongoDB database.
 
