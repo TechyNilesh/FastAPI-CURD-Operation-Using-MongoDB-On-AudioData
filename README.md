@@ -31,8 +31,7 @@ You have one of three audio files which structures are defined below Audio file 
 - `Duration in number of seconds` – (mandatory, integer, positive)
 - `Uploaded time` – (mandatory, Datetime, cannot be in the past)
 
-*Implement create, read, upload, and delete endpoints for an audio file as defined below:
-*
+*Implement create, read, upload, and delete endpoints for an audio file as defined below:*
 
 **Create API:**
 
