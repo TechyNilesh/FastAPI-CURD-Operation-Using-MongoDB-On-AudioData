@@ -1,0 +1,5 @@
+schematics==2.1.0
+uvicorn==0.13.4
+pymongo==3.10.1
+fastapi==0.63.0
+secrets==1.0.2
