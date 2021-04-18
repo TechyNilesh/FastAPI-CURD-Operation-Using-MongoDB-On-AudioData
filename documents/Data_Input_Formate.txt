@@ -1,0 +1,33 @@
+## song
+
+ {
+  "audioFileType":"song",
+  "audioFileMetadata":{
+      "name":"nilesh.mp3",
+      "duration":30
+      }
+  }
+
+## podcast
+
+ {
+  "audioFileType":"podcast",
+  "audioFileMetadata":{
+      "name":"nilesh.mp3",
+      "host":"vermaji",
+      "participants": ["mohit","avdesh"],
+      "duration":10
+      }
+  }
+
+## audiobook
+
+ {
+  "audioFileType":"audiobook",
+  "audioFileMetadata":{
+      "title":"nilesh.mp3",
+      "author":"vermaji",
+      "narrator":"mohit",
+      "duration":10
+      }
+  }
